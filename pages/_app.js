@@ -1,49 +1,16 @@
-import '../styles/globals.css'
-import Layout from '../components/Layout/Layout'
+import { ApolloProvider } from '@apollo/client';
+import client from '../lib/apollo-client'
+import Layout from '../components/Layout/Layout';
+import '../styles/globals.css';
 
 function MyApp({ Component, pageProps, pages }) {
   return (
-  <Layout pages={pages}>
-    <Component {...pageProps} />
-  </Layout>
-
-  )
+    <ApolloProvider client={client}>
+      <Layout pages={pages}>
+        <Component {...pageProps} />
+      </Layout>
+    </ApolloProvider>
+  );
 }
 
-export default MyApp
-
-
-export async function getStaticProps() {
-  const res = await fetch(process.env.NEXT_PUBLIC_API_ENDPOINT, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      query: `
-          query MyQuery {
-            posts {
-              nodes {
-                slug
-                title
-              }
-            }
-            pages {
-              nodes {
-                slug
-                title
-              }
-            }
-          }
-          `,
-    }),
-  });
-
-  const json = await res.json();
-
-  return {
-    props: {
-      pages: json.data.pages,
-      posts: json.data.posts,
-    },
-  };
-}
-
+export default MyApp;

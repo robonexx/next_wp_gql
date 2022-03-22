@@ -16,7 +16,7 @@ export default function Blog({ posts }) {
       </h1>
      
       <h2>and the posts</h2>
-        {posts &&
+       {/*  {posts &&
           posts.nodes.map(({ title, slug }) => {
             return (
               <ul key={slug}>
@@ -27,13 +27,13 @@ export default function Blog({ posts }) {
                 </li>
                 </ul>
             );
-          })}
+          })} */}
       
     </div>
   );
 }
-export async function getStaticProps() {
-  const res = await fetch(process.env.NEXT_PUBLIC_API_ENDPOINT, {
+/* export async function getStaticProps() {
+  const res = await fetch(process.env.NEXT_PUBLIC_WORDPRESS_SITE_ENDPOINT, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -65,3 +65,4 @@ export async function getStaticProps() {
     },
   };
 }
+ */
