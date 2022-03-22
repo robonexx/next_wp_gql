@@ -12,7 +12,7 @@ export default function Nav({navItems}) {
             return (
               <li className={`${styles.link_item_nav}`} key={item?.node?.id}>
                 <Link href={item?.node?.path}>
-                  <span>{item?.node?.label}</span>
+                  <span className={styles.link_item}>{item?.node?.label}</span>
                 </Link>
               </li>
             );
