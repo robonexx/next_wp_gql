@@ -1,22 +1,15 @@
-import Nav from "../nav/Nav";
-import styles from '../../styles/Home.module.css'
+import Nav from '../nav/Nav';
+import Header from '../header/Header';
 
-
-const Layout = ({ children }) => {
-  
+const Layout = ({ data, children }) => {
+  console.warn('data: ', data);
   return (
-      <>
-          <header className={styles.header}>
-       Header for website
-      </header>
-          <Nav />
-      <div>
-        {children}
-      </div>
+    <>
+      <Header />
+      <Nav navItems={data?.menus?.headerMenu}/>
+      <div>{children}</div>
     </>
   );
 };
 
 export default Layout;
-
-
